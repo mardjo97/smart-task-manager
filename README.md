@@ -330,6 +330,19 @@ docker system prune -a
 docker-compose build --no-cache
 ```
 
+**mvnw: not found error (Windows users)**
+If you encounter `/bin/sh: ./mvnw: not found` when building Docker images, this is caused by incorrect line endings. The repository includes a `.gitattributes` file that ensures correct line endings, but if you cloned before this was added:
+
+```bash
+# Re-normalize line endings
+git rm --cached -r .
+git reset --hard HEAD
+
+# Verify mvnw has LF line endings
+git check-attr -a smarttask-backend/mvnw
+# Should show: eol: lf
+```
+
 ---
 
 ## Development Workflow
