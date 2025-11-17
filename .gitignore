@@ -1,0 +1,38 @@
+# .gitignore for SmartTask Manager
+
+# Backend (Java/Maven/Quarkus)
+smarttask-backend/target/
+smarttask-backend/.quarkus/
+smarttask-backend/*.log
+
+# Frontend (Angular/Node)
+smarttask-frontend/node_modules/
+smarttask-frontend/dist/
+smarttask-frontend/.angular/
+smarttask-frontend/coverage/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Docker
+.dockerignore
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp

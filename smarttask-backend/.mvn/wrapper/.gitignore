@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Maven wrapper
+!.mvn/wrapper/maven-wrapper.jar

@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: smarttask-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: smarttask
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - smarttask-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./smarttask-backend
+      dockerfile: Dockerfile
+    container_name: smarttask-backend
+    ports:
+      - "8080:8080"
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017
+      JWT_SECRET: my-super-secret-jwt-key-change-in-production
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - smarttask-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/q/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./smarttask-frontend
+      dockerfile: Dockerfile
+    container_name: smarttask-frontend
+    ports:
+      - "8081:8081"
+    depends_on:
+      - backend
+    networks:
+      - smarttask-network
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  smarttask-network:
+    driver: bridge
