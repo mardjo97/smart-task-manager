@@ -43,7 +43,7 @@ docker-compose up --build
 #### Start Backend
 ```bash
 cd smarttask-backend
-./mvnw quarkus:dev
+mvn quarkus:dev
 # Running on http://localhost:8080
 ```
 
@@ -183,13 +183,13 @@ environment:
 cd smarttask-backend
 
 # Run all tests
-./mvnw test
+mvn test
 
 # Run with coverage
-./mvnw test jacoco:report
+mvn test jacoco:report
 
 # Run integration tests
-./mvnw verify
+mvn verify
 ```
 
 Test Coverage: Unit tests for services, repositories, and utilities.
@@ -304,8 +304,6 @@ lsof -i :8080
 # Kill process or change port in application.properties
 ```
 
-### Frontend Issues
-
 **API Connection Refused**
 - Ensure backend is running on port 8080
 - Check CORS configuration in backend
@@ -330,19 +328,6 @@ docker system prune -a
 docker-compose build --no-cache
 ```
 
-**mvnw: not found error (Windows users)**
-If you encounter `/bin/sh: ./mvnw: not found` when building Docker images, this is caused by incorrect line endings. The repository includes a `.gitattributes` file that ensures correct line endings, but if you cloned before this was added:
-
-```bash
-# Re-normalize line endings
-git rm --cached -r .
-git reset --hard HEAD
-
-# Verify mvnw has LF line endings
-git check-attr -a smarttask-backend/mvnw
-# Should show: eol: lf
-```
-
 ---
 
 ## Development Workflow
@@ -355,7 +340,7 @@ git check-attr -a smarttask-backend/mvnw
 2. **Run Backend in Dev Mode**
    ```bash
    cd smarttask-backend
-   ./mvnw quarkus:dev
+   mvn quarkus:dev
    ```
    Features:
    - Hot reload
@@ -379,7 +364,7 @@ git check-attr -a smarttask-backend/mvnw
 5. **Test Changes**
    ```bash
    # Backend
-   ./mvnw test
+   mvn test
    
    # Frontend
    npm test

@@ -33,7 +33,7 @@ sleep 3
 # Start Backend
 echo "🔧 Starting Quarkus Backend..."
 cd smarttask-backend
-./mvnw quarkus:dev > backend.log 2>&1 &
+mvn quarkus:dev > backend.log 2>&1 &
 BACKEND_PID=$!
 cd ..
 
