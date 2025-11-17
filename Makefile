@@ -3,7 +3,7 @@
 # Start development environment
 dev-start:
 	docker-compose up -d mongodb
-	cd smarttask-backend && ./mvnw quarkus:dev &
+	cd smarttask-backend && mvn quarkus:dev &
 	cd smarttask-frontend && npm start &
 
 # Stop all services
@@ -14,17 +14,17 @@ dev-stop:
 
 # Run all tests
 test:
-	cd smarttask-backend && ./mvnw test
+	cd smarttask-backend && mvn test
 	cd smarttask-frontend && npm test
 
 # Build for production
 build:
-	cd smarttask-backend && ./mvnw clean package
+	cd smarttask-backend && mvn clean package
 	cd smarttask-frontend && npm run build
 
 # Clean all build artifacts
 clean:
-	cd smarttask-backend && ./mvnw clean
+	cd smarttask-backend && mvn clean
 	cd smarttask-frontend && rm -rf dist node_modules
 
 # Docker commands

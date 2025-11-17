@@ -51,7 +51,7 @@ docker run -d -p 27017:27017 --name mongodb mongo:7
 
 ```bash
 cd smarttask-backend
-./mvnw quarkus:dev
+mvn quarkus:dev
 ```
 
 The application will start on `http://localhost:8080`
@@ -95,17 +95,17 @@ app.jwt.duration=86400
 
 ```bash
 # Run all tests
-./mvnw test
+mvn test
 
 # Run with coverage
-./mvnw test jacoco:report
+mvn test jacoco:report
 ```
 
 ## Building
 
 ```bash
 # Build JAR
-./mvnw clean package
+mvn clean package
 
 # Run the JAR
 java -jar target/quarkus-app/quarkus-run.jar

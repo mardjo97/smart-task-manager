@@ -16,9 +16,6 @@
 
 ### Configuration
 - `pom.xml` - Maven project configuration
-- `mvnw` - Maven wrapper script
-- `.mvn/wrapper/maven-wrapper.properties` - Maven wrapper config
-- `.mvn/wrapper/maven-wrapper.jar` - Maven wrapper binary
 - `Dockerfile` - Backend container image
 - `README.md` - Backend documentation
 - `.gitignore` - Backend git exclusions

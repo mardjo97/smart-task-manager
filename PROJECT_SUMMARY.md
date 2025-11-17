@@ -246,7 +246,7 @@ GET /q/dev                 - Dev UI (dev mode)
 **Run Tests:**
 ```bash
 # Backend
-cd smarttask-backend && ./mvnw test
+cd smarttask-backend && mvn test
 
 # Frontend
 cd smarttask-frontend && npm test

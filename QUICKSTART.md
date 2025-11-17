@@ -19,7 +19,7 @@ Access: http://localhost:8081
 docker run -d -p 27017:27017 mongo:7
 
 # Terminal 2: Backend
-cd smarttask-backend && ./mvnw quarkus:dev
+cd smarttask-backend && mvn quarkus:dev
 
 # Terminal 3: Frontend
 cd smarttask-frontend && npm install && npm start
@@ -111,7 +111,7 @@ curl "http://localhost:8080/api/tasks?category=Work" \
 ### Backend Tests
 ```bash
 cd smarttask-backend
-./mvnw test
+mvn test
 ```
 
 ### Frontend Tests
@@ -156,8 +156,8 @@ docker run -d -p 27017:27017 --name smarttask-mongo mongo:7
 ```bash
 # Clean and rebuild
 cd smarttask-backend
-./mvnw clean
-./mvnw quarkus:dev
+mvn clean
+mvn quarkus:dev
 ```
 
 ### Frontend Won't Start
