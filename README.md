@@ -21,9 +21,13 @@ A modern, full-stack task management application built with Quarkus, Angular, an
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd smart-task-manager
+
+# Install Frontend dependencies
+cd smart-task-manager/smarttask-frontend
+npm install
 
 # Start all services (MongoDB, Backend, Frontend)
+cd ..
 docker-compose up --build
 
 # Access the application
